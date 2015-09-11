@@ -1,7 +1,6 @@
 .gitignore
 *.gz
 *.swp
-boomerang-*.js
 node_modules*
 hint.log
 tests/vendor/
