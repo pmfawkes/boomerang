@@ -6,7 +6,6 @@ module.exports = function (grunt) {
     var src = [ "boomerang.js" ];
     var plugins = grunt.file.readJSON("plugins.json");
     src.push(plugins.plugins);
-    src.push("plugins/zzz_last_plugin.js");
 
     grunt.initConfig({
 	pkg:  grunt.file.readJSON("package.json"),
@@ -36,39 +35,39 @@ module.exports = function (grunt) {
 	},
 	"string-replace": {
 	    release: {
-		files: [{
-		    src: "build/<%= pkg.name %>-<%= pkg.version %>.js",
-		    dest: "build/<%= pkg.name %>-<%= pkg.version %>.js"
-		}],
-		options: {
-		    replacements: [{
-			pattern: /else{}/g,
-			replacement: ""
-		    },{
-			pattern: /\(window\)\);/g,
-			replacement: "\(window\)\);\n"
-		    },{
-			pattern: /\(\)\);\(function\(/g,
-			replacement: "\(\)\);\n(function("
-		    }]
-		}
+    		files: [{
+    		    src: "build/<%= pkg.name %>-<%= pkg.version %>.js",
+    		    dest: "build/<%= pkg.name %>-<%= pkg.version %>.js"
+    		}],
+    		options: {
+    		    replacements: [{
+    			pattern: /else{}/g,
+    			replacement: ""
+    		    },{
+    			pattern: /\(window\)\);/g,
+    			replacement: "\(window\)\);\n"
+    		    },{
+    			pattern: /\(\)\);\(function\(/g,
+    			replacement: "\(\)\);\n(function("
+    		    }]
+    		}
 	    }
 	},
 	uglify: {
 	    options : {
-		preserveComments: false,
-		mangle: false,
-		sourceMap: true
-	    },
-	    min_release: {
-		report: "gzip",
-		src: "build/<%= pkg.name %>-<%= pkg.version %>.js",
-		dest: "build/<%= pkg.name %>-<%= pkg.version %>.min.js"
-	    },
-	    min_debug: {
-		report: "gzip",
-		src: "build/<%= pkg.name %>-<%= pkg.version %>-debug.js",
-		dest: "build/<%= pkg.name %>-<%= pkg.version %>-debug.min.js"
+    		preserveComments: false,
+    		mangle: false,
+    		sourceMap: true
+    	    },
+    	    min_release: {
+    		report: "gzip",
+    		src: "build/<%= pkg.name %>-<%= pkg.version %>.js",
+    		dest: "build/<%= pkg.name %>-<%= pkg.version %>.min.js"
+    	    },
+    	    min_debug: {
+    		report: "gzip",
+    		src: "build/<%= pkg.name %>-<%= pkg.version %>-debug.js",
+    		dest: "build/<%= pkg.name %>-<%= pkg.version %>-debug.min.js"
 	    }
 	},
 	clean: {
@@ -91,17 +90,17 @@ module.exports = function (grunt) {
 		    "./build/<%= pkg.name %>-<%= pkg.version %>.js"
 		]
 	    },
-	    unit: { 
-		singleRun: true,
-		colors: false,
-		browsers: ['PhantomJS']		
+	    unit: {
+    		singleRun: true,
+    		colors: false,
+    		browsers: ['PhantomJS']
 	    },
-	    dev: { 
-		singleRun: false,
-		colors: false,
-		browsers: ['Chrome']
+	    dev: {
+    		singleRun: false,
+    		colors: false,
+    		browsers: ['Chrome']
 	    }
-	}
+	   }
     });
 
     grunt.loadNpmTasks("grunt-eslint");

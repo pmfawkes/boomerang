@@ -3,7 +3,6 @@
 *.swp
 boomerang-*.js
 node_modules*
-build/*
 hint.log
 tests/vendor/
 tests/coverage/
